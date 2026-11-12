@@ -1,175 +1,71 @@
 body {
+    font-family: Arial, sans-serif;
     margin: 0;
-    background: #4870df;
-}
-
-svg {
-    width: 100vw;
-    height: 100vh;
-}
-
-.region {
-    fill: gray;
-    stroke: black;
-    stroke-width: 1;
-    transition: 0.2s;
-}
-
-.region:hover {
-    opacity: 0.8;
-    cursor: pointer;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f0f2f5;
 }
 
 #panel {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    background: white;
-    padding: 10px;
-    border-radius: 10px;
-}
-
-/* Hide blocks by default */
-.text-block {
-    display: none;             /* Hidden on start */
-    position: fixed;
-    left: 30vw;
-    width: 14vw;
-    min-width: 140px;
-    height: 12vh;
-    min-height: 80px;
-    background: rgba(20, 25, 40, 0.75);
-    border: 2px solid rgba(255, 255, 255, 0.4);
+    margin-bottom: 20px;
+    padding: 15px 25px;
+    background: #ffffff;
     border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
-    flex-direction: column;
-    padding: 6px 8px;
-    box-sizing: border-box;
-    z-index: 50;
-    backdrop-filter: blur(2px);
-    resize: both;
-    overflow: hidden;
-}
-
-/* Class enabling visibility after clicking the button */
-.text-block.show {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     display: flex;
-}
-
-/* Button highlight when teams are enabled */
-#toggle-teams-btn.active {
-    background-color: #2b73d9;
-    color: white;
-    font-weight: bold;
-    border-color: #1a56aa;
-}
-
-/* Clearer resize handle in the bottom-right corner */
-.text-block::-webkit-resizer {
-    background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 4px;
-}
-
-/* Vertical positions marked in red */
-.block-top {
-    top: 27vh;
-}
-
-.block-bottom {
-    top: 40vh;
-}
-
-/* Panel header with color picker */
-.block-header {
-    display: flex;
-    justify-content: space-between;
+    gap: 15px;
     align-items: center;
-    font-family: sans-serif;
-    font-size: 11px;
-    font-weight: bold;
-    color: #ddd;
-    margin-bottom: 4px;
-    user-select: none;
-    cursor: grab;
-    touch-action: none; /* Blocks page scrolling gesture on the header */
 }
 
-.block-header:active {
-    cursor: grabbing; /* Closed hand while moving */
+#panel h2 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
 }
 
-.block-color {
-    width: 22px;
-    height: 20px;
+button {
+    padding: 8px 15px;
     border: none;
-    background: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
     cursor: pointer;
-    padding: 0;
+    font-size: 14px;
+    transition: background-color 0.2s;
 }
 
-/* Text field inside the panel */
-.block-content {
-    flex: 1;
-    background: transparent;
+button:hover {
+    background-color: #0056b3;
+}
+
+input[type="color"] {
     border: none;
-    outline: none;
-    resize: none;
-    font-family: sans-serif;
-    font-weight: bold;
-    font-size: 40px;
-    color: #ffffff;            /* Default text color */
-    line-height: 1.3;
+    width: 40px;
+    height: 35px;
+    cursor: pointer;
+    background: none;
 }
 
-.block-content::placeholder {
-    color: rgba(255, 255, 255, 0.5);
-    font-weight: normal;
+svg {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    border-radius: 6px;
 }
 
-.text-block {
-    /* ... your other .text-block styles unchanged ... */
-    resize: none !important; /* Disable small system handle */
-    position: fixed;
-    touch-action: none;      /* Prevents accidental page scrolling on mobile */
+/* Default styling for map countries */
+.kraj {
+    fill: #e0e0e0;
+    stroke: #ffffff;
+    stroke-width: 0.5px;
+    cursor: pointer;
+    transition: fill 0.2s ease, opacity 0.2s ease;
 }
 
-/* Large handle in the bottom-right corner */
-.resize-handle {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 34px;
-    height: 34px;
-    cursor: nwse-resize;
-    touch-action: none;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-    padding: 3px;
-    box-sizing: border-box;
-}
-
-/* Appearance of the icon / stripes in the corner */
-.resize-handle::after {
-    content: "";
-    width: 14px;
-    height: 14px;
-    border-right: 3px solid rgba(255, 255, 255, 0.8);
-    border-bottom: 3px solid rgba(255, 255, 255, 0.8);
-    border-radius: 2px;
-}
-
-/* Unlocking movement and scaling on mobile devices */
-.text-block {
-    touch-action: none;
-}
-
-.block-header {
-    touch-action: none;
-    user-select: none;
-    -webkit-user-select: none;
-}
-
-.resize-handle {
-    touch-action: none;
+.kraj:hover {
+    opacity: 0.85;
 }
