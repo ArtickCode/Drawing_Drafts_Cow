@@ -15,7 +15,7 @@ eraserBtn.addEventListener("click", () => {
     eraserBtn.classList.toggle("active", trybGumki);
 });
 
-// Kolorowanie państw
+// Color countries
 document.querySelectorAll(".kraj").forEach(element => {
     element.addEventListener("click", () => {
         let kodKraju = "";
@@ -34,7 +34,7 @@ document.querySelectorAll(".kraj").forEach(element => {
     });
 });
 
-// Pokaż/ukryj drużyny
+// Show/hide teams
 const toggleTeamsBtn = document.querySelector("#toggle-teams-btn");
 const blokiDruzyn = document.querySelectorAll(".tekst-blok");
 let czyDruzynyWidoczne = false;
@@ -49,36 +49,36 @@ if (toggleTeamsBtn) {
     });
 }
 
-// Obsługa PRZESUWANIA i ZMIANY ROZMIARU (Pointer Events - Myszka + Telefon)
+// Handling DRAGGING and RESIZING (Pointer Events - Mouse + Touch)
 document.querySelectorAll(".tekst-blok").forEach(blok => {
     const naglowek = blok.querySelector(".blok-naglowek");
     const colorInput = blok.querySelector(".blok-kolor");
     const textarea = blok.querySelector(".blok-tresc");
     const uchwyt = blok.querySelector(".uchwyt-rozmiaru");
 
-    // Zmiana koloru tekstu
+    // Change text color
     if (colorInput && textarea) {
         colorInput.addEventListener("input", () => {
             textarea.style.color = colorInput.value;
         });
     }
 
-    // --- 1. PRZESUWANIE OKIENKA ---
+    // --- 1. DRAGGING THE WINDOW ---
     let czyPrzesuwa = false;
     let przesuniecieX = 0;
     let przesuniecieY = 0;
 
     naglowek.addEventListener("pointerdown", (e) => {
-        if (e.target === colorInput) return; // Kliknięcie w próbnik nie przesuwa
+        if (e.target === colorInput) return; // Clicking the color picker doesn't drag
 
         czyPrzesuwa = true;
-        naglowek.setPointerCapture(e.pointerId); // "Przykleja" dotyk do belki
+        naglowek.setPointerCapture(e.pointerId); // "Pins" touch to the header bar
 
         const rect = blok.getBoundingClientRect();
         przesuniecieX = e.clientX - rect.left;
         przesuniecieY = e.clientY - rect.top;
 
-        // Przeniesienie aktywnego okna na wierzch
+        // Bring active window to the front
         document.querySelectorAll(".tekst-blok").forEach(b => b.style.zIndex = "50");
         blok.style.zIndex = "60";
     });
@@ -105,7 +105,7 @@ document.querySelectorAll(".tekst-blok").forEach(blok => {
     naglowek.addEventListener("pointerup", zakonczPrzesuwanie);
     naglowek.addEventListener("pointercancel", zakonczPrzesuwanie);
 
-    // --- 2. POWIĘKSZANIE / POMNIEJSZANIE OKIENKA ---
+    // --- 2. RESIZING THE WINDOW ---
     if (uchwyt) {
         let czySkaluje = false;
         let startX = 0, startY = 0;
