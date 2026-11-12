@@ -1,26 +1,26 @@
-body{
+body {
     margin: 0;
     background: #4870df;
 }
 
-svg{
+svg {
     width: 100vw;
     height: 100vh;
 }
 
-.kraj{
+.region {
     fill: gray;
     stroke: black;
     stroke-width: 1;
     transition: 0.2s;
 }
 
-.kraj:hover{
+.region:hover {
     opacity: 0.8;
     cursor: pointer;
 }
 
-#panel{
+#panel {
     position: fixed;
     top: 20px;
     left: 20px;
@@ -29,9 +29,9 @@ svg{
     border-radius: 10px;
 }
 
-/* Domyślnie ukrywamy bloki */
-.tekst-blok {
-    display: none;             /* Ukryte na start */
+/* Hide blocks by default */
+.text-block {
+    display: none;             /* Hidden on start */
     position: fixed;
     left: 30vw;
     width: 14vw;
@@ -51,12 +51,12 @@ svg{
     overflow: hidden;
 }
 
-/* Klasa włączająca widoczność po kliknięciu przycisku */
-.tekst-blok.pokaz {
+/* Class enabling visibility after clicking the button */
+.text-block.show {
     display: flex;
 }
 
-/* Podświetlenie przycisku, gdy drużyny są włączone */
+/* Button highlight when teams are enabled */
 #toggle-teams-btn.active {
     background-color: #2b73d9;
     color: white;
@@ -64,23 +64,23 @@ svg{
     border-color: #1a56aa;
 }
 
-/* Wyraźniejszy uchwyt do skalowania w prawym dolnym rogu */
-.tekst-blok::-webkit-resizer {
+/* Clearer resize handle in the bottom-right corner */
+.text-block::-webkit-resizer {
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 4px;
 }
 
-/* Pozycje pionowe zaznaczone na czerwono */
-.blok-gora {
+/* Vertical positions marked in red */
+.block-top {
     top: 27vh;
 }
 
-.blok-dol {
+.block-bottom {
     top: 40vh;
 }
 
-/* Nagłówek panelu z próbnikiem koloru */
-.blok-naglowek {
+/* Panel header with color picker */
+.block-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -91,14 +91,14 @@ svg{
     margin-bottom: 4px;
     user-select: none;
     cursor: grab;
-    touch-action: none; /* Blokuje gest przewijania strony na nagłówku */
+    touch-action: none; /* Blocks page scrolling gesture on the header */
 }
 
-.blok-naglowek:active {
-    cursor: grabbing; /* Rączka zaciśnięta podczas przesuwania */
+.block-header:active {
+    cursor: grabbing; /* Closed hand while moving */
 }
 
-.blok-kolor {
+.block-color {
     width: 22px;
     height: 20px;
     border: none;
@@ -107,8 +107,8 @@ svg{
     padding: 0;
 }
 
-/* Pole tekstowe wewnątrz panelu */
-.blok-tresc {
+/* Text field inside the panel */
+.block-content {
     flex: 1;
     background: transparent;
     border: none;
@@ -117,23 +117,24 @@ svg{
     font-family: sans-serif;
     font-weight: bold;
     font-size: 40px;
-    color: #ffffff;           /* Domyślny kolor tekstu */
+    color: #ffffff;            /* Default text color */
     line-height: 1.3;
 }
 
-.blok-tresc::placeholder {
+.block-content::placeholder {
     color: rgba(255, 255, 255, 0.5);
     font-weight: normal;
 }
-.tekst-blok {
-    /* ... pozostałe Twoje style .tekst-blok bez zmian ... */
-    resize: none !important; /* Wyłączamy mały systemowy uchwyt */
+
+.text-block {
+    /* ... your other .text-block styles unchanged ... */
+    resize: none !important; /* Disable small system handle */
     position: fixed;
-    touch-action: none;      /* Zapobiega przypadkowemu przewijaniu strony na telefonie */
+    touch-action: none;      /* Prevents accidental page scrolling on mobile */
 }
 
-/* Duży uchwyt w prawym dolnym rogu */
-.uchwyt-rozmiaru {
+/* Large handle in the bottom-right corner */
+.resize-handle {
     position: absolute;
     right: 0;
     bottom: 0;
@@ -148,8 +149,8 @@ svg{
     box-sizing: border-box;
 }
 
-/* Wygląd ikony / prążków w rogu */
-.uchwyt-rozmiaru::after {
+/* Appearance of the icon / stripes in the corner */
+.resize-handle::after {
     content: "";
     width: 14px;
     height: 14px;
@@ -157,17 +158,18 @@ svg{
     border-bottom: 3px solid rgba(255, 255, 255, 0.8);
     border-radius: 2px;
 }
-/* Odblokowanie przesuwania i skalowania na telefonach */
-.tekst-blok {
+
+/* Unlocking movement and scaling on mobile devices */
+.text-block {
     touch-action: none;
 }
 
-.blok-naglowek {
+.block-header {
     touch-action: none;
     user-select: none;
     -webkit-user-select: none;
 }
 
-.uchwyt-rozmiaru {
+.resize-handle {
     touch-action: none;
 }
